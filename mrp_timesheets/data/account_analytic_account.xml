@@ -1,0 +1,6 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<odoo>
+  <record id="mrp_timesheets.mrp_account" model="account.analytic.account">
+    <field name="name">Manufacturing</field>
+  </record>
+</odoo>

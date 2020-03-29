@@ -1,0 +1,94 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<odoo>
+  <record id="mrp_timesheets.mrp_production_form_add_timesheets" model="ir.ui.view" context="{'studio': True}">
+    <field name="active" eval="True"/>
+    <field name="arch" type="xml">
+      <data>
+        <!-- context="{'default_account_id': %(mrp_timesheets.mrp_account)d, -->
+        <xpath expr="//form[1]/sheet[1]/notebook[1]" position="inside">
+          <page name="studio_page_AIjzL" string="Timesheets">
+            <field name="x_studio_timesheet_lines" string="Timesheet Lines" context="{'default_account_id': %(mrp_timesheets.mrp_account)d,                         'default_product_id': product_id,                         'default_x_studio_manufacturing_order': id}">
+              <tree editable="bottom" string="Timesheet Activities" default_order="date">
+                <field name="date"/>
+                <field name="user_id" invisible="1"/>
+                <field name="employee_id" required="1"/>
+                <field name="name"/>
+                <field name="unit_amount" widget="timesheet_uom"/>
+                <field name="x_studio_manufacturing_order" invisible="1"/>
+                <field name="product_id" invisible="1"/>
+                <field name="account_id" invisible="1"/>
+                <field name="company_id" invisible="1"/>
+              </tree>
+            </field>
+          </page>
+        </xpath>
+      </data>
+    </field>
+    <field name="field_parent" eval="False"/>
+    <field name="groups_id" eval="[(6, 0, [])]"/>
+    <field name="inherit_id" ref="mrp.mrp_production_form_view"/>
+    <field name="key" eval="False"/>
+    <field name="mode">extension</field>
+    <field name="model">mrp.production</field>
+    <field name="name">Odoo Studio: mrp.production.form customization</field>
+    <field name="priority">99</field>
+    <field name="type">form</field>
+  </record>
+  <record id="mrp_timesheets.account_analytic_line_form_add_mo" model="ir.ui.view" context="{'studio': True}">
+    <field name="active" eval="True"/>
+    <field name="arch" type="xml">
+      <data>
+        <xpath expr="//field[@name='unit_amount']" position="after">
+          <field name="x_studio_manufacturing_order" string="Manufacturing Order"/>
+        </xpath>
+      </data>
+    </field>
+    <field name="field_parent" eval="False"/>
+    <field name="groups_id" eval="[(6, 0, [])]"/>
+    <field name="inherit_id" ref="analytic.view_account_analytic_line_form"/>
+    <field name="key" eval="False"/>
+    <field name="mode">extension</field>
+    <field name="model">account.analytic.line</field>
+    <field name="name">Odoo Studio: account.analytic.line.form customization</field>
+    <field name="priority">99</field>
+    <field name="type">form</field>
+  </record>
+  <record id="mrp_timesheets.account_analytic_line_tree_add_mo" model="ir.ui.view" context="{'studio': True}">
+    <field name="active" eval="True"/>
+    <field name="arch" type="xml">
+      <data>
+        <xpath expr="//field[@name='date']" position="after">
+          <field name="x_studio_manufacturing_order"/>
+        </xpath>
+      </data>
+    </field>
+    <field name="field_parent" eval="False"/>
+    <field name="groups_id" eval="[(6, 0, [])]"/>
+    <field name="inherit_id" ref="analytic.view_account_analytic_line_tree"/>
+    <field name="key" eval="False"/>
+    <field name="mode">extension</field>
+    <field name="model">account.analytic.line</field>
+    <field name="name">Odoo Studio: account.analytic.line.tree customization</field>
+    <field name="priority">99</field>
+    <field name="type">tree</field>
+  </record>
+  <record id="mrp_timesheets.account_analytic_line_select_manufacturing" model="ir.ui.view" context="{'studio': True}">
+    <field name="active" eval="True"/>
+    <field name="arch" type="xml">
+      <data>
+        <field name="tag_ids" position="after">
+          <filter name="converted" string="To be Converted" domain="[('x_studio_converted', '!=', True)]"/>
+        </field>
+      </data>
+    </field>
+    <field name="field_parent" eval="False"/>
+    <field name="groups_id" eval="[(6, 0, [])]"/>
+    <field name="inherit_id" ref="analytic.view_account_analytic_line_filter"/>
+    <field name="key" eval="False"/>
+    <field name="mode">extension</field>
+    <field name="model">account.analytic.line</field>
+    <field name="name">account.analytic.line.select.manufacturing</field>
+    <field name="priority">16</field>
+    <field name="type">search</field>
+  </record>
+</odoo>

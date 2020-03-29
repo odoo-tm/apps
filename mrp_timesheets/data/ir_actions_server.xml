@@ -1,0 +1,116 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<odoo>
+  <record id="mrp_timesheets.server_action_timesheet_cost" model="ir.actions.server" context="{'studio': True}">
+    <field name="binding_model_id" eval="False"/>
+    <field name="binding_type">action</field>
+    <field name="binding_view_types">list,form</field>
+    <field name="child_ids" eval="[(6, 0, [])]"/>
+    <field name="code"><![CDATA[# Available variables:
+#  - env: Odoo Environment on which the action is triggered
+#  - model: Odoo Model of the record on which the action is triggered; is a void recordset
+#  - record: record on which the action is triggered; may be void
+#  - records: recordset of all records on which the action is triggered in multi-mode; may be void
+#  - time, datetime, dateutil, timezone: useful Python libraries
+#  - log: log(message, level='info'): logging function to record debug information in ir.logging table
+#  - Warning: Warning Exception to use with raise
+# To return an action, assign: action = {...}
+
+mrp_account = env['ir.model.data'].xmlid_to_res_id('mrp_timesheets.mrp_account')
+
+for record in records:
+  if record.account_id.id == mrp_account and record.employee_id.timesheet_cost == 0:
+    raise Warning("%s has no Timesheet Cost, so the timesheet will be incomplete!\n\nPlease update their Employee Record.\n\nYou will find Timesheet Cost on the HR Settings tab." % 
+                 (record.employee_id.name))
+  else:
+    record['amount'] = - record.employee_id.timesheet_cost * record.unit_amount
+
+
+]]></field>
+    <field name="crud_model_id" eval="False"/>
+    <field name="help" eval="False"/>
+    <field name="link_field_id" eval="False"/>
+    <field name="model_id" ref="analytic.model_account_analytic_line"/>
+    <field name="name">Employee Timesheet Cost</field>
+    <field name="sequence">5</field>
+    <field name="state">code</field>
+  </record>
+  <record id="mrp_timesheets.create_manufacturing_journal_entry" model="ir.actions.server" context="{'studio': True}">
+    <field name="binding_model_id" ref="analytic.model_account_analytic_line"/>
+    <field name="binding_type">action</field>
+    <field name="binding_view_types">list,form</field>
+    <field name="child_ids" eval="[(6, 0, [])]"/>
+    <field name="code"><![CDATA[# Available variables:
+#  - env: Odoo Environment on which the action is triggered
+#  - model: Odoo Model of the record on which the action is triggered; is a void recordset
+#  - record: record on which the action is triggered; may be void
+#  - records: recordset of all records on which the action is triggered in multi-mode; may be void
+#  - time, datetime, dateutil, timezone: useful Python libraries
+#  - log: log(message, level='info'): logging function to record debug information in ir.logging table
+#  - Warning: Warning Exception to use with raise
+# To return an action, assign: action = {...}
+
+mrp_account = env['ir.model.data'].xmlid_to_res_id('mrp_timesheets.mrp_account')
+cogs_type = env['account.account.type'].search([('name','=','Cost of Revenue')])
+cogs_account = env['account.account'].search([('user_type_id','=',cogs_type.id)],limit=1)
+expense_type = env['account.account.type'].search([('name','=','Expenses')])
+expense_account = env['account.account'].search([('user_type_id','=',expense_type.id)],limit=1)
+
+for record in records:
+ if not record.account_id.id == mrp_account:
+   raise Warning("Entry on %s - %s - is not a Manufacturing Entry!" % (record.date, record.name)) 
+ if record.x_studio_converted:
+   raise Warning("Entry on %s - %s for %s - has already been converted!" % (record.date, record.name, record.x_studio_manufacturing_order.name))
+ record['x_studio_converted'] = True
+  
+je = env['account.move'].create({
+   'narration': 'Autocreated from Manufacturing Timesheets',
+   'date': datetime.datetime.today(),
+   'ref': "Manufacturing Labor",
+})
+
+journal_items = []
+credit = 0
+
+for record in records.sorted(key=lambda r: (r.date, r.x_studio_manufacturing_order.name)):
+  credit += abs(record.amount)
+
+  journal_items.append((0,0,{
+    'move_id': je.id,
+    'name': '%s - %s - %.2f hrs' % (record.x_studio_manufacturing_order.name, record.name, record.unit_amount),
+    'account_id': cogs_account.id,
+    'product_id' : record.product_id.id,
+    'quantity': record.unit_amount,
+    'debit': abs(record.amount),
+    'credit': 0.0,
+  }))
+
+journal_items.append((0,0,{
+   'move_id': je.id,
+   'name': 'Accrued Labor/Labor Expense',
+   'account_id': expense_account.id,
+   'product_id': record.product_id.id,
+   'quantity': 1,
+   'credit': credit,
+   'debit': 0.0,
+}))
+
+je.write({'line_ids': journal_items})
+
+action = {
+  'id': env['ir.model.data'].xmlid_to_res_id('account.action_move_journal_line'),
+  'type': 'ir.actions.act_window',
+  'view_mode': 'form',
+  'res_model': 'account.move',
+  'context': [],
+  'res_id': je.id,
+}
+]]></field>
+    <field name="crud_model_id" eval="False"/>
+    <field name="help" eval="False"/>
+    <field name="link_field_id" eval="False"/>
+    <field name="model_id" ref="analytic.model_account_analytic_line"/>
+    <field name="name">Create Manufacturing Journal Entry</field>
+    <field name="sequence">5</field>
+    <field name="state">code</field>
+  </record>
+</odoo>

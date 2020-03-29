@@ -1,0 +1,26 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<odoo>
+  <record id="mrp_timesheets.timesheet_cost" model="base.automation" context="{'studio': True}">
+    <field name="action_server_id" ref="mrp_timesheets.server_action_timesheet_cost"/>
+    <field name="active" eval="True"/>
+    <field name="filter_domain" eval="False"/>
+    <field name="filter_pre_domain" eval="False"/>
+    <field name="last_run" eval="False"/>
+    <field name="on_change_fields" eval="False"/>
+    <field name="trg_date_id" eval="False"/>
+    <field name="trg_date_range" eval="False"/>
+    <field name="trg_date_range_type" eval="False"/>
+    <field name="trigger">on_create_or_write</field>
+    <field name="code"><![CDATA[
+mrp_account = env['ir.model.data'].xmlid_to_res_id('mrp_timesheets.mrp_account')
+
+for record in records:
+  if record.account_id.id == mrp_account and record.employee_id.timesheet_cost == 0:
+    raise Warning("%s has no Timesheet Cost, so the timesheet will be incomplete!\n\nPlease update their Employee Record.\n\nYou will find Timesheet Cost on the HR Settings tab." % 
+                 (record.employee_id.name))
+  else:
+    record['amount'] = - record.employee_id.timesheet_cost * record.unit_amount
+]]>
+    </field>
+  </record>
+</odoo>
