@@ -31,6 +31,16 @@ Setup:
 
 From the Accounting --> Configuration --> Settings Menu, check on Analytic Accounting
 
+From your Chart of Accounts, mark one account as "Cost Allocation" and one account as "Labor Expense/Accrual" by checking the relevant box.  You can only have ONE of each kind of account.
+
+"Cost Allocation" - this is the account that the financial cost of Labor will be DEBITED to (to increase it).  You can move this amount to COGS when you sell something.  This should be an asset account, probably shown on your Chart with Inventory.
+
+"Labor Expense/Accrual" - this is the account that the financial cost of Labor will be CREDITED to (to decrease it if it is an expense account or increase it if it is a liability account).  This should be an expense account (if you expense labor as it is performed) or a liability account (if you accrue labor hours between the times where you run payroll). 
+
+Note: You should review with your bookkeeper or accountant which Cost Allocation account and which Labor method is compatible with the way you record your financial records.
+
+From the Employees App, enter a Timesheet Cost per hour for each Employee that will log time on Manufacturing Orders.
+
 Use:
 
 On a Manufacturing Order, you will see a new Timesheets Tab.
