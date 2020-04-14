@@ -20,7 +20,7 @@ Installing:
 
 2. From the Apps Switcher screen, activate Odoo Studio:
 
-.. image:: https://github.com/odoo-tm/apps/blob/13.0/mrp_timesheets/doc/odoo_studio_button.png
+.. image:: https://raw.githubusercontent.com/odoo-tm/apps/13.0/mrp_timesheets/doc/odoo_studio_button.png
 
 3. From the Customizations Menu on the left, select Import
 
