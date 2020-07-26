@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 {
     'name': 'Held Products',
-    'version': '13.0.1.2',
+    'version': '13.0.1.3',
     'category': 'Proof of Concept',
     'summary': 'Manage Customer specific purchases, with alerts and traceability',
     'description': u"""
@@ -17,8 +17,8 @@ It contains the apps created with Studio and the customizations of existing apps
     ],
     'data': [
         'data/ir_model_fields.xml',
-        'data/ir_ui_view.xml',
         'data/ir_actions_act_window.xml',
+        'data/ir_ui_view.xml',
         'data/ir_actions_server.xml',
         'data/ir_ui_menu.xml',
     ],
