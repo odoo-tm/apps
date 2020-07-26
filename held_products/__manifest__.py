@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 {
     'name': 'Held Products',
-    'version': '13.0.1.0',
+    'version': '13.0.1.1',
     'category': 'Proof of Concept',
     'summary': 'Manage Customer specific purchases, with alerts and traceability',
     'description': u"""
