@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 {
     'name': 'Held Products',
-    'version': '13.0.1.1',
+    'version': '13.0.1.2',
     'category': 'Proof of Concept',
     'summary': 'Manage Customer specific purchases, with alerts and traceability',
     'description': u"""
@@ -12,6 +12,7 @@ It contains the apps created with Studio and the customizations of existing apps
     'depends': [
         'base',
         'stock',
+        'sale_management',
         'web_studio',
     ],
     'data': [
