@@ -30,7 +30,11 @@ Setup:
 
 No specific setup is needed, but you may want to review the address formatting if you have limited space on your checks and find that you need to consolidate the "street" and "street2" field and/or remove the "country_id" field from the check.  
 
+To do this, activate Developer Mode and then open the country "United States" from the "Contacts --> Configuration --> Localization --> Countries" Menu sequence
+
 .. image:: https://raw.githubusercontent.com/odoo-tm/apps/13.0/check_remit/doc/layout.png
+
+You can remove the line that adds "country_name", or even show "street" and "street2" on one line to have addresses shown in two or three lines instead of four.
 
 This is a global setting that affects all places Odoo displays address information.
 
