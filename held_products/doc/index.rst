@@ -11,8 +11,8 @@ Target Platform, Edition and Version:
 Required Apps:
 
 - Odoo Studio - web_studio
-- Inventory - mrp
-- Task Logs - hr_timesheet
+- Inventory - stock
+- Sales - sale_management
 
 Installing:
 
