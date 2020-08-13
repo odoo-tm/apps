@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 {
     'name': 'Check Remit To',
-    'version': '13.0.1.0',
+    'version': '13.0.1.1',
     'category': 'Proof of Concept',
     'summary': 'Studio App: Support checks with remit to contact information',
     'description': u"""
