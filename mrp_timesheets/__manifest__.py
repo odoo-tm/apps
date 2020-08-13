@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 {
     'name': 'Manufacturing Timesheets',
-    'version': '13.0.0.9',
+    'version': '13.0.0.10',
     'category': 'Proof of Concept',
     'summary': 'Studio App: Timesheets Tab on Manufacturing Orders. Post Costs via Journal Entry',
     'description': u"""
