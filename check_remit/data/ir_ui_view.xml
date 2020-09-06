@@ -1,0 +1,44 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<odoo>
+  <record id="check_remit.custom_report_remit_to" model="ir.ui.view" context="{'studio': True}">
+    <field name="active" eval="True"/>
+    <field name="arch" type="xml">
+      <data>
+        <div class="ckus_payee_addr" position="replace">
+          <div class="ckus_payee_addr"><span t-if="page['partner_id'].x_remit_to" t-field="page['partner_id'].x_remit_to"/> - 
+    <span t-field="page['partner_id'].name"/>
+    <span t-esc="page['partner_id']" t-options="{&quot;widget&quot;: &quot;contact&quot;, &quot;fields&quot;: [&quot;address&quot;], &quot;no_marker&quot;: True}"/>
+  </div>
+        </div>
+      </data>
+    </field>
+    <field name="field_parent" eval="False"/>
+    <field name="groups_id" eval="[(6, 0, [])]"/>
+    <field name="inherit_id" ref="l10n_us_check_printing.ckus_check"/>
+    <field name="key">gen_key.585eea</field>
+    <field name="mode">extension</field>
+    <field name="model" eval="False"/>
+    <field name="name">custom_ray_odoo</field>
+    <field name="priority">16</field>
+    <field name="type">qweb</field>
+  </record>
+  <record id="check_remit.custom_view_remit_to" model="ir.ui.view" context="{'studio': True}">
+    <field name="active" eval="True"/>
+    <field name="arch" type="xml">
+      <data>
+        <field name="type" position="before">
+          <field name="x_remit_to"/>
+        </field>
+      </data>
+    </field>
+    <field name="field_parent" eval="False"/>
+    <field name="groups_id" eval="[(6, 0, [])]"/>
+    <field name="inherit_id" ref="base.view_partner_form"/>
+    <field name="key" eval="False"/>
+    <field name="mode">extension</field>
+    <field name="model">res.partner</field>
+    <field name="name">custom_ray_odoo</field>
+    <field name="priority">16</field>
+    <field name="type">form</field>
+  </record>
+</odoo>
