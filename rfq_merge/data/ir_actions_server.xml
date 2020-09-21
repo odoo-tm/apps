@@ -17,13 +17,13 @@
 
 vendor_warning = False
 confirmed_warning = False
-canceled_warning = False
+cancelled_warning = False
 locked_warning = False
 picking_type_warning = False
 count_warning = False
 vendor_msg = "Merge only works when all selected RFQ's are from the same Vendor.\n\nIn your selection you have RFQ's from: "
 confirmed_msg = "Merge only works on RFQ's.\n\nIn your selection you have confirmed Purchase Order(s): "
-cancelled_msg = "Merge only works on RFQ's.\n\nIn your selection you have canceled Purchase Order(s): "
+cancelled_msg = "Merge only works on RFQ's.\n\nIn your selection you have cancelled Purchase Order(s): "
 locked_msg = "Merge only works on RFQ's.\n\nIn your selection you have locked Purchase Order(s): "
 picking_type_msg = "Merge only works on RFQ's being received to the same location.\n\nIn your selection you have multiple 'Deliver To' locations.\n\nPlease group by 'Deliver To' in the list to resolve this."
 count_msg = "Merge only works when you have more than one RFQ selected!"
@@ -79,7 +79,7 @@ for record in records.sorted(key=lambda r: r.name):
         'price_unit': order_line.price_unit,
         'account_analytic_id': order_line.account_analytic_id and order_line.account_analytic_id.id or False,
         'sale_order_id': order_line.sale_order_id and order_line.sale_order_id.id or False,
-        'sale_line_id': order_line.sale_line_id and order_line.sale_line.id or False,
+        'sale_line_id': order_line.sale_line_id and order_line.sale_line_id.id or False,
         'date_planned': order_line.date_planned,
         'taxes_id': order_line.taxes_id,
       }))
@@ -107,8 +107,8 @@ if vendor_warning:
 if confirmed_warning:
   raise Warning(confirmed_msg[:-2] + '.')
 
-if canceled_warning:
-  raise Warning(canceled_msg[:-2] + '.')
+if cancelled_warning:
+  raise Warning(cancelled_msg[:-2] + '.')
   
 if locked_warning:
   raise Warning(locked_msg[:-2] + '.')
@@ -117,7 +117,8 @@ if picking_type_warning:
   raise Warning(picking_type_msg)
   
 for record in records:
-  record.button_cancel()
+  record.button_
+()
 
 purchase_order = env['purchase.order'].sudo().create({
   'picking_type_id': picking_type,
