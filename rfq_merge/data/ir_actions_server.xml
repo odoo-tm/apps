@@ -50,8 +50,8 @@ for record in records.sorted(key=lambda r: r.name):
       confirmed_warning = True
       confirmed_msg += '%s, ' % (record.name)
     if record.state == 'cancel':
-      canceled_warning = True
-      canceled_msg += '%s, ' % (record.name)
+      cancelled_warning = True
+      cancelled_msg += '%s, ' % (record.name)
     if record.state == 'done':
       locked_warning = True
       locked_msg += '%s, ' % (record.name)
