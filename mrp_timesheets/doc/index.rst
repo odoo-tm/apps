@@ -2,6 +2,14 @@
 Manufacturing Timesheets
 ========================
 
+Note:
+
+- Support for this App is NOT provided via the Odoo Support team. 
+- Please email Technical Marketing - ray@odoo.com for support options. 
+- Note that this app may require changes for your particular organization.  
+- It has only been tested in databases created with the Country setting of the United States and may need to be localized for other countries. 
+- Discuss your requirements with your Odoo Advisor or an Odoo Partner to understand the best way to leverage this kind of functionality.
+
 Target Platform, Edition and Version:
 
 - Online, Odoo.sh or On-Premise.
