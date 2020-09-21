@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 {
     'name': 'Merge Purchase Orders',
-    'version': '13.0.1.1',
+    'version': '13.0.1.2',
     'category': 'Proof of Concept',
     'summary': "Cancel existing RFQ's to make a merged new one.",
     'description': u"""
