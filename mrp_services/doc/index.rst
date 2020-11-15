@@ -2,6 +2,10 @@
 Manufacturing Services
 ======================
 
+************************************************************************************
+November 15th, 2020 - this is a BETA release.  Please send feedback to ray@odoo.com.
+************************************************************************************  
+
 This is a “proof of concept” to illustrate how service products can be used in manufacturing orders to represent direct labor costs contributing to the cost of finished goods.
 
 Note:
