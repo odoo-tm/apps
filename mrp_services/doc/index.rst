@@ -46,19 +46,19 @@ User Experience Changes:
 	
 - A Services tab is added to the manufacturing order form view: 
 
-- .. image:: https://raw.githubusercontent.com/odoo-tm/apps/14.0/mrp_services/doc/services_tab.png
+.. image:: https://raw.githubusercontent.com/odoo-tm/apps/14.0/mrp_services/doc/services_tab.png
 
 - The form view of service lines shows the unit cost and the amount that will be added to the finished product cost based on the quantity of units consumed:
 
-- .. image:: https://raw.githubusercontent.com/odoo-tm/apps/14.0/mrp_services/doc/services_line.png
+.. image:: https://raw.githubusercontent.com/odoo-tm/apps/14.0/mrp_services/doc/services_line.png
 
 - The Cost Analysis report available from completed manufacturing orders is hidden (see Known Limitations for more information).
 
-- .. image:: https://raw.githubusercontent.com/odoo-tm/apps/14.0/mrp_services/doc/cost_analysis.png
+.. image:: https://raw.githubusercontent.com/odoo-tm/apps/14.0/mrp_services/doc/cost_analysis.png
 
 Functional Changes:
 
-- Service products on Bills of Materials are automatically added the relevant manufacturing order.
+- Service products on Bills of Materials are automatically added to the relevant manufacturing order.
 
 - The cost of the finished good is increased based on the unit price of the service and the quantity consumed.
 
@@ -68,51 +68,51 @@ Walkthrough:
 
 - Create a Service Product
 
-- .. image:: https://raw.githubusercontent.com/odoo-tm/apps/14.0/mrp_services/doc/service_product.png
+.. image:: https://raw.githubusercontent.com/odoo-tm/apps/14.0/mrp_services/doc/service_product.png
 
-- The Cost of this product will be added to the finished good cost based on how many units are consumed.
+The Cost of this product will be added to the finished good cost based on how many units are consumed.
 
 - Setup real-time inventory valuation on the Office Furniture product category:
 
-- .. image:: https://raw.githubusercontent.com/odoo-tm/apps/14.0/mrp_services/doc/product_category.png
+.. image:: https://raw.githubusercontent.com/odoo-tm/apps/14.0/mrp_services/doc/product_category.png
 
 - Add a unit of the service product to the bill of materials for Plastic Laminate:
 
-- .. image:: https://raw.githubusercontent.com/odoo-tm/apps/14.0/mrp_services/doc/components.png
+.. image:: https://raw.githubusercontent.com/odoo-tm/apps/14.0/mrp_services/doc/components.png
 
 - Create a new manufacturing order for this product.
 
 - Consume a unit of the service product:
 
-- .. image:: https://raw.githubusercontent.com/odoo-tm/apps/14.0/mrp_services/doc/consume.png
+.. image:: https://raw.githubusercontent.com/odoo-tm/apps/14.0/mrp_services/doc/consume.png
 
-- Complete the manufacturing order and review the valuation (Developer Mode required):
+- Complete the manufacturing order and review the valuation (developer mode required):
 
-- .. image:: https://raw.githubusercontent.com/odoo-tm/apps/14.0/mrp_services/doc/valuation.png
+.. image:: https://raw.githubusercontent.com/odoo-tm/apps/14.0/mrp_services/doc/valuation.png
 
 Additional Functionality:
 
-- Accounting app:
+Accounting app:
 
-- Just like additional direct costs from work centers, a balance in the Work in Progress account (if defined on the Production location) builds up.
+- Just like additional direct costs from work centers, a balance in the Work in Progress account (if defined on the Production location) builds up each time a service product is consumed.
 
 - Periodically, an accounting user should reclass this balance by using the Automatic Entries action:
 
-- .. image:: https://raw.githubusercontent.com/odoo-tm/apps/14.0/mrp_services/doc/automatic_entries.png
+.. image:: https://raw.githubusercontent.com/odoo-tm/apps/14.0/mrp_services/doc/automatic_entries.png
 
 - In this case, the $35 of labor (a credit) that has built up in WIP is reclassed to a Manufacturing Labor liability account:
 
-- .. image:: https://raw.githubusercontent.com/odoo-tm/apps/14.0/mrp_services/doc/wizard.png
+.. image:: https://raw.githubusercontent.com/odoo-tm/apps/14.0/mrp_services/doc/wizard.png
 
 - The following entry is created:
 
-- .. image:: https://raw.githubusercontent.com/odoo-tm/apps/14.0/mrp_services/doc/entry.png
+.. image:: https://raw.githubusercontent.com/odoo-tm/apps/14.0/mrp_services/doc/entry.png
 
-- The new credit balance would then be cleared as part of payroll.
+- The new credit balance would then be cleared as part of the payroll process.
 
 Scenarios Tested:
 
-- Service Products with Units of Measure (such as Hours) and costs that change over time.
+- Service Products with Units of Measure (such as hours) and costs that change over time.
 
 - Manual and automated (such as reordering rules, make to order) creation of Manufacturing Orders.
 
@@ -124,11 +124,11 @@ Known Limitations:
 
 - The BoM Structure & Cost report does show the complete projected cost, including labor, of the finished good:
 
-- .. image:: https://raw.githubusercontent.com/odoo-tm/apps/14.0/mrp_services/doc/bom_structure_and_cost.png
+.. image:: https://raw.githubusercontent.com/odoo-tm/apps/14.0/mrp_services/doc/bom_structure_and_cost.png
 
-- The Valuation button on the manufacturing order does show the correct finished good cost:
+- The Valuation button on the manufacturing order (developer model required) does show the correct finished good cost:
 
-- .. image:: https://raw.githubusercontent.com/odoo-tm/apps/14.0/mrp_services/doc/valuation.png
+.. image:: https://raw.githubusercontent.com/odoo-tm/apps/14.0/mrp_services/doc/valuation.png
 
 
 
