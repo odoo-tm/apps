@@ -28,6 +28,7 @@ Required Apps:
 
 - Odoo Studio - web_studio
 - Manufacturing - mrp
+- Inventory - stock
 - Invoicing - account
 
 *****************
