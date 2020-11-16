@@ -115,6 +115,8 @@ The Cost of this product will be added to the finished good cost based on how ma
 
 .. image:: https://raw.githubusercontent.com/odoo-tm/apps/14.0/mrp_services/doc/valuation.png
 
+- The price of the components in this example is $10 and the cost of the service is $35 per unit.  One unit of the service means the cost of the finished product is now $45.
+
 *************************
 Additional Functionality:
 *************************
