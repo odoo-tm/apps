@@ -70,12 +70,12 @@ User Experience Changes:
 ************************
 	
 .. list-table:: 
-   :widths: 50 50
+   :widths: 40 60
    :header-rows: 1
 
-   * - 
-     - 
-   * - Fields to manage obselecence are added to the Product Form View: 
+   * - Description
+     - Image
+   * - Fields to manage obsolecence are added to the Product Form View: 
      - .. image:: https://raw.githubusercontent.com/odoo-tm/apps/14.0/stock_obsolete/doc/product_fields.png 
           :width: 150
    * - A Warning is shown at the top of all Products that are (or will become) Obsolete:
