@@ -1,0 +1,310 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<odoo>
+  <record id="ir_ui_view_844_custom_view" model="ir.ui.view" context="{'studio': True}">
+    <field name="active" eval="True"/>
+    <field name="arch" type="xml">
+      <data>
+        <header position="after">
+          <div class="alert alert-warning text-center o_form_header" attrs="{'invisible': [('x_obsolete_date','=',False)]}">
+            <div class="text-left"><button icon="fa-hourglass-end" class="btn btn-link alert-warning"/><b>Obsolete Warning </b> - this product was marked obsolete effective <field name="x_obsolete_date" readonly="1"/> by <field name="x_obsolete_user" readonly="1"/>
+    </div>
+          </div>
+        </header>
+        <field name="categ_id" position="after">
+          <field name="x_obsolete_date"/>
+          <field name="x_obsolete_user" attrs="{'required': [('x_obsolete_date','!=',False)], 'invisible': [('x_obsolete_date','=',False)]}"/>
+        </field>
+      </data>
+    </field>
+    <field name="field_parent" eval="False"/>
+    <field name="inherit_id" ref="product.product_template_form_view"/>
+    <field name="key" eval="False"/>
+    <field name="mode">extension</field>
+    <field name="model">product.template</field>
+    <field name="name">stock_obsolete product template</field>
+    <field name="priority">16</field>
+    <field name="type">form</field>
+  </record>
+  <record id="ir_ui_view_845_custom_view" model="ir.ui.view" context="{'studio': True}">
+    <field name="active" eval="True"/>
+    <field name="arch" type="xml">
+      <data>
+        <header position="after">
+          <div class="alert alert-warning text-center o_form_header" attrs="{'invisible': [('x_contains_obsolete','=',False)]}">
+            <div class="text-left"><field name="x_contains_obsolete" invisible="1"/><button icon="fa-hourglass-end" class="btn btn-link alert-warning"/><b>Obsolete Warning </b> - one or more products on this Transfer have been marked as obsolete
+    </div>
+          </div>
+        </header>
+        <xpath expr="//page[@name='operations']/field/tree/button[@name='action_assign_serial']" position="after">
+          <field name="x_obsolete_date" invisible="1"/>
+          <button icon="fa-hourglass-end" class="btn alert-warning" attrs="{'invisible': [('x_obsolete_date','=',False)]}" title="Obsolete Product"/>
+        </xpath>
+      </data>
+    </field>
+    <field name="field_parent" eval="False"/>
+    <field name="inherit_id" ref="stock.view_picking_form"/>
+    <field name="key" eval="False"/>
+    <field name="mode">extension</field>
+    <field name="model">stock.picking</field>
+    <field name="name">stock_obsolete stock picking</field>
+    <field name="priority">16</field>
+    <field name="type">form</field>
+  </record>
+  <record id="ir_ui_view_848_custom_view" model="ir.ui.view" context="{'studio': True}">
+    <field name="active" eval="True"/>
+    <field name="arch" type="xml">
+      <data>
+        <field name="activity_exception_decoration" position="before">
+          <field name="x_contains_obsolete" invisible="1"/>
+          <button icon="fa-hourglass-end" class="btn alert-warning" attrs="{'invisible': [('x_contains_obsolete','=',False)]}" title="One or more products marked as obsolete"/>
+        </field>
+      </data>
+    </field>
+    <field name="field_parent" eval="False"/>
+    <field name="inherit_id" ref="stock.vpicktree"/>
+    <field name="key" eval="False"/>
+    <field name="mode">extension</field>
+    <field name="model">stock.picking</field>
+    <field name="name">stock_obsolete stock picking tree</field>
+    <field name="priority">16</field>
+    <field name="type">tree</field>
+  </record>
+  <record id="ir_ui_view_849_custom_view" model="ir.ui.view" context="{'studio': True}">
+    <field name="active" eval="True"/>
+    <field name="arch" type="xml">
+      <data>
+        <button name="action_view_stock_move_lines" position="before">
+          <button string="Open Transfers" type="action" name="%(ir_act_server_so_open_pt_transfers)d" attrs="{'invisible':[('type', 'not in', ['product', 'consu'])]}" class="oe_stat_button" icon="fa-truck" groups="stock.group_stock_user"/>
+        </button>
+      </data>
+    </field>
+    <field name="field_parent" eval="False"/>
+    <field name="inherit_id" ref="stock.product_template_form_view_procurement_button"/>
+    <field name="key" eval="False"/>
+    <field name="mode">extension</field>
+    <field name="model">product.template</field>
+    <field name="name">stock_obsolete product template button</field>
+    <field name="priority">16</field>
+    <field name="type">form</field>
+  </record>
+    <record id="ir_ui_view_949_custom_view" model="ir.ui.view" context="{'studio': True}">
+    <field name="active" eval="True"/>
+    <field name="arch" type="xml">
+      <data>
+        <button name="action_view_stock_move_lines" position="before">
+          <button string="Open Transfers" type="action" name="%(ir_act_server_so_open_pp_transfers)d" attrs="{'invisible':[('type', 'not in', ['product', 'consu'])]}" class="oe_stat_button" icon="fa-truck" groups="stock.group_stock_user"/>
+        </button>
+      </data>
+    </field>
+    <field name="field_parent" eval="False"/>
+    <field name="inherit_id" ref="stock.product_form_view_procurement_button"/>
+    <field name="key" eval="False"/>
+    <field name="mode">extension</field>
+    <field name="model">product.product</field>
+    <field name="name">stock_obsolete product product button</field>
+    <field name="priority">16</field>
+    <field name="type">form</field>
+  </record>
+  <record id="ir_ui_view_877_custom_view" model="ir.ui.view" context="{'studio': True}">
+    <field name="active" eval="True"/>
+    <field name="arch" type="xml">
+      <data>
+        <sheet position="before">
+          <div class="alert alert-warning text-center o_form_header" attrs="{'invisible': [('x_contains_obsolete','=',False)]}">
+            <div class="text-left"><field name="x_contains_obsolete" invisible="1"/><button icon="fa-hourglass-end" class="btn btn-link alert-warning"/><b>Obsolete Warning </b> - one or more products on this Bill of Materials have been marked as obsolete
+      </div>
+          </div>
+        </sheet>
+        <div class="oe_button_box" name="button_box" position="inside">
+          <button string="Open Orders" type="action" name="%(ir_act_server_so_open_manufacturing_orders)d" class="oe_stat_button" icon="fa-wrench"/>
+        </div>
+        <xpath expr="//page[@name='components']/field/tree/field[@name='operation_id']" position="after">
+          <field name="x_obsolete_date" invisible="1"/>
+          <button icon="fa-hourglass-end" class="btn alert-warning" attrs="{'invisible': [('x_obsolete_date','=',False)]}" title="Obsolete Product"/>
+        </xpath>
+      </data>
+    </field>
+    <field name="field_parent" eval="False"/>
+    <field name="inherit_id" ref="mrp.mrp_bom_form_view"/>
+    <field name="key" eval="False"/>
+    <field name="mode">extension</field>
+    <field name="model">mrp.bom</field>
+    <field name="name">stock_obsolete mrp bom</field>
+    <field name="priority">16</field>
+    <field name="type">form</field>
+  </record>
+  <record id="ir_ui_view_878_custom_view" model="ir.ui.view" context="{'studio': True}">
+    <field name="active" eval="True"/>
+    <field name="arch" type="xml">
+      <data>
+        <field name="product_uom_id" position="after">
+          <field name="x_contains_obsolete" invisible="1"/>
+          <button icon="fa-hourglass-end" class="btn alert-warning" attrs="{'invisible': [('x_contains_obsolete','=',False)]}" title="One or more products marked as obsolete"/>
+        </field>
+      </data>
+    </field>
+    <field name="field_parent" eval="False"/>
+    <field name="inherit_id" ref="mrp.mrp_bom_tree_view"/>
+    <field name="key" eval="False"/>
+    <field name="mode">extension</field>
+    <field name="model">mrp.bom</field>
+    <field name="name">stock_obsolete mrp bom tree</field>
+    <field name="priority">16</field>
+    <field name="type">tree</field>
+  </record>
+  <record id="ir_ui_view_388_custom_view" model="ir.ui.view" context="{'studio': True}">
+    <field name="active" eval="True"/>
+    <field name="arch" type="xml">
+      <data>
+        <field name="active" position="after">
+          <field name="x_obsolete_date" invisible="1"/>
+          <button icon="fa-hourglass-end" class="btn alert-warning" attrs="{'invisible': [('x_obsolete_date','=',False)]}" title="Product marked as obsolete"/>
+        </field>
+      </data>
+    </field>
+    <field name="field_parent" eval="False"/>
+    <field name="inherit_id" ref="product.product_product_tree_view"/>
+    <field name="key" eval="False"/>
+    <field name="mode">extension</field>
+    <field name="model">product.product</field>
+    <field name="name">stock_obsolete product product tree</field>
+    <field name="priority">16</field>
+    <field name="type">tree</field>
+  </record>
+  <record id="ir_ui_view_882_custom_view" model="ir.ui.view" context="{'studio': True}">
+    <field name="active" eval="True"/>
+    <field name="arch" type="xml">
+      <data>
+        <field name="activity_exception_decoration" position="before">
+          <field name="x_obsolete_date" invisible="1"/>
+          <button icon="fa-hourglass-end" class="btn alert-warning" attrs="{'invisible': [('x_obsolete_date','=',False)]}" title="Product marked as obsolete"/>
+        </field>
+      </data>
+    </field>
+    <field name="field_parent" eval="False"/>
+    <field name="inherit_id" ref="product.product_template_tree_view"/>
+    <field name="key" eval="False"/>
+    <field name="mode">extension</field>
+    <field name="model">product.template</field>
+    <field name="name">stock_obsolete product template tree</field>
+    <field name="priority">16</field>
+    <field name="type">tree</field>
+  </record>
+  <record id="ir_ui_view_883_custom_view" model="ir.ui.view" context="{'studio': True}">
+    <field name="active" eval="True"/>
+    <field name="arch" type="xml">
+      <data>
+        <field name="attribute_line_ids" position="before">
+          <filter string="Obsolete" name="obsolete" domain="[('x_obsolete_date','!=',False)]"/>
+          <separator/>
+        </field>
+      </data>
+    </field>
+    <field name="field_parent" eval="False"/>
+    <field name="inherit_id" ref="product.product_template_search_view"/>
+    <field name="key" eval="False"/>
+    <field name="mode">extension</field>
+    <field name="model">product.template</field>
+    <field name="name">stock_obsolete product template search</field>
+    <field name="priority">16</field>
+    <field name="type">search</field>
+  </record>
+   <record id="ir_ui_view_488_custom_view" model="ir.ui.view" context="{'studio': True}">
+    <field name="active" eval="True"/>
+    <field name="arch" type="xml">
+      <data>
+        <filter name="planning_issues" position="before">
+          <filter string="Obsolete" name="obsolete" domain="[('x_contains_obsolete','!=',False)]"/>
+        </filter>
+      </data>
+    </field>
+    <field name="field_parent" eval="False"/>
+    <field name="inherit_id" ref="stock.view_picking_internal_search"/>
+    <field name="key" eval="False"/>
+    <field name="mode">extension</field>
+    <field name="model">stock.picking</field>
+    <field name="name">stock_obsolete stock picking search</field>
+    <field name="priority">16</field>
+    <field name="type">search</field>
+  </record>
+  <record id="ir_ui_view_889_custom_view" model="ir.ui.view" context="{'studio': True}">
+    <field name="active" eval="True"/>
+    <field name="arch" type="xml">
+      <data>
+        <xpath expr="//page[@name='components']/field/tree/button[@name='action_show_details']" position="after">
+          <field name="x_obsolete_date" invisible="1"/>
+          <button icon="fa-hourglass-end" class="btn alert-warning" attrs="{'invisible': [('x_obsolete_date','=',False)]}" title="Obsolete Product"/>
+        </xpath>
+        <header position="after">
+          <div class="alert alert-warning text-center o_form_header" attrs="{'invisible': [('x_contains_obsolete','=',False)]}">
+            <div class="text-left"><field name="x_contains_obsolete" invisible="1"/><button icon="fa-hourglass-end" class="btn btn-link alert-warning"/><b>Obsolete Warning </b> - one or more products on this Transfer have been marked as obsolete
+    </div>
+          </div>
+        </header>
+      </data>
+    </field>
+    <field name="field_parent" eval="False"/>
+    <field name="inherit_id" ref="mrp.mrp_production_form_view"/>
+    <field name="key" eval="False"/>
+    <field name="mode">extension</field>
+    <field name="model">mrp.production</field>
+    <field name="name">stock_obsolete mrp production</field>
+    <field name="priority">16</field>
+    <field name="type">form</field>
+  </record>
+  <record id="ir_ui_view_891_custom_view" model="ir.ui.view" context="{'studio': True}">
+    <field name="active" eval="True"/>
+    <field name="arch" type="xml">
+      <data>
+        <field name="delay_alert_date" position="after">
+          <field name="x_contains_obsolete" invisible="1"/>
+          <button icon="fa-hourglass-end" class="btn alert-warning" attrs="{'invisible': [('x_contains_obsolete','=',False)]}" title="One or more products marked as obsolete"/>
+        </field>
+      </data>
+    </field>
+    <field name="field_parent" eval="False"/>
+    <field name="inherit_id" ref="mrp.mrp_production_tree_view"/>
+    <field name="key" eval="False"/>
+    <field name="mode">extension</field>
+    <field name="model">mrp.production</field>
+    <field name="name">stock_obsolete mrp production tree</field>
+    <field name="priority">16</field>
+    <field name="type">tree</field>
+  </record>
+  <record id="ir_ui_view_899_custom_view" model="ir.ui.view" context="{'studio': True}">
+    <field name="active" eval="True"/>
+    <field name="arch" type="xml">
+      <data>
+        <filter name="planning_issues" position="before">
+          <filter string="Contains Obsolete Product" name="obsolete" domain="[('x_contains_obsolete','!=',False)]"/>
+        </filter>
+      </data>
+    </field>
+    <field name="field_parent" eval="False"/>
+    <field name="inherit_id" ref="mrp.view_mrp_production_filter"/>
+    <field name="key" eval="False"/>
+    <field name="mode">extension</field>
+    <field name="model">mrp.production</field>
+    <field name="name">stock_obsolete mrp production search</field>
+    <field name="priority">16</field>
+    <field name="type">search</field>
+  </record>
+  <record id="ir_ui_view_900_custom_view" model="ir.ui.view" context="{'studio': True}">
+    <field name="active" eval="True"/>
+    <field name="arch" type="xml">
+      <data>
+        <filter name="inactive" position="before">
+          <filter string="Contains Obsolete Product" name="obsolete" domain="[('x_contains_obsolete','!=',False)]"/>
+        </filter>
+      </data>
+    </field>
+    <field name="field_parent" eval="False"/>
+    <field name="inherit_id" ref="mrp.view_mrp_bom_filter"/>
+    <field name="key" eval="False"/>
+    <field name="mode">extension</field>
+    <field name="model">mrp.bom</field>
+    <field name="name">stock_obsolete mrp bom search</field>
+    <field name="priority">16</field>
+    <field name="type">search</field>
+  </record>
+</odoo>

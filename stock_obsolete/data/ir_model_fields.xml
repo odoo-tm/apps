@@ -1,0 +1,108 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<odoo>
+  <record id="ir_model_fields_4755_obsolete_date" model="ir.model.fields" context="{'studio': True}">
+    <field name="copied" eval="False"/>
+    <field name="field_description">Obsolete Date</field>
+    <field name="model">product.template</field>
+    <field name="model_id" ref="product.model_product_template"/>
+    <field name="name">x_obsolete_date</field>
+    <field name="state">manual</field>
+    <field name="store" eval="True"/>
+    <field name="ttype">date</field>
+  </record>
+  <record id="ir_model_fields_4758_obsoleted_by" model="ir.model.fields" context="{'studio': True}">
+    <field name="copied" eval="False"/>
+    <field name="field_description">Obsoleted By</field>
+    <field name="model">product.template</field>
+    <field name="model_id" ref="product.model_product_template"/>
+    <field name="name">x_obsolete_user</field>
+    <field name="on_delete">restrict</field>
+    <field name="relation">res.users</field>
+    <field name="state">manual</field>
+    <field name="store" eval="True"/>
+     <field name="ttype">many2one</field>
+  </record>
+  <record id="ir_model_fields_4761_obolete_date" model="ir.model.fields" context="{'studio': True}">
+    <field name="copied" eval="False"/>
+    <field name="field_description">Obsolete Date</field>
+    <field name="model">stock.move</field>
+    <field name="model_id" ref="stock.model_stock_move"/>
+    <field name="name">x_obsolete_date</field>
+    <field name="on_delete" eval="False"/>
+    <field name="readonly" eval="True"/>
+    <field name="related">product_id.x_obsolete_date</field>
+    <field name="state">manual</field>
+    <field name="store" eval="False"/>
+    <field name="ttype">date</field>
+  </record>
+  <record id="ir_model_fields_4769_contains_obsolete" model="ir.model.fields" context="{'studio': True}">
+    <field name="complete_name" eval="False"/>
+    <field name="compute"><![CDATA[for record in self:
+  record['x_contains_obsolete'] = False
+  if record.state not in ['done','cancel']:
+    for line in record.move_ids_without_package:
+      if line.x_obsolete_date:
+        record['x_contains_obsolete'] = True
+]]></field>
+    <field name="copied" eval="False"/>
+    <field name="depends">move_ids_without_package.x_obsolete_date</field>
+     <field name="field_description">Contains Obsolete Product</field>
+    <field name="model">stock.picking</field>
+    <field name="model_id" ref="stock.model_stock_picking"/>
+    <field name="name">x_contains_obsolete</field>
+    <field name="readonly" eval="True"/>
+    <field name="state">manual</field>
+    <field name="store" eval="True"/>
+    <field name="ttype">boolean</field>
+  </record>
+  <record id="ir_model_fields_4885_obolete_date" model="ir.model.fields" context="{'studio': True}">
+    <field name="copied" eval="False"/>
+    <field name="field_description">Obsolete Date</field>
+    <field name="model">mrp.bom.line</field>
+    <field name="model_id" ref="mrp.model_mrp_bom_line"/>
+    <field name="name">x_obsolete_date</field>
+    <field name="readonly" eval="True"/>
+    <field name="related">product_id.x_obsolete_date</field>
+      <field name="state">manual</field>
+    <field name="store" eval="False"/>
+    <field name="ttype">date</field>
+  </record>
+  <record id="ir_model_fields_4887_contains_obsolete" model="ir.model.fields" context="{'studio': True}">
+    <field name="complete_name" eval="False"/>
+    <field name="compute"><![CDATA[for record in self:
+  record['x_contains_obsolete'] = False
+  if record.active:
+    for line in record.bom_line_ids:
+      if line.x_obsolete_date:
+        record['x_contains_obsolete'] = True]]></field>
+    <field name="copied" eval="False"/>
+    <field name="depends">bom_line_ids.x_obsolete_date,active</field>
+    <field name="field_description">Contains Obsolete Product</field>
+    <field name="model">mrp.bom</field>
+    <field name="model_id" ref="mrp.model_mrp_bom"/>
+    <field name="name">x_contains_obsolete</field>
+    <field name="readonly" eval="True"/>
+    <field name="state">manual</field>
+    <field name="store" eval="True"/>
+    <field name="ttype">boolean</field>
+  </record>
+  <record id="ir_model_fields_4889_contains_obsolete" model="ir.model.fields" context="{'studio': True}">
+    <field name="complete_name" eval="False"/>
+    <field name="compute"><![CDATA[for record in self:
+  record['x_contains_obsolete'] = False
+  if record.state not in ['done','cancel']:
+    for line in record.move_raw_ids:
+      if line.x_obsolete_date:
+        record['x_contains_obsolete'] = True]]></field>
+    <field name="copied" eval="False"/>
+    <field name="depends">move_raw_ids.x_obsolete_date</field>
+    <field name="field_description">Contains Obsolete Product</field>
+    <field name="model">mrp.production</field>
+    <field name="model_id" ref="mrp.model_mrp_production"/>
+    <field name="name">x_contains_obsolete</field>
+    <field name="readonly" eval="True"/>
+    <field name="state">manual</field>
+    <field name="store" eval="True"/>
+    <field name="ttype">boolean</field>
+  </record>
+</odoo>
