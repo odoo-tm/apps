@@ -1,0 +1,101 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<odoo>
+  <record id="ir_act_server_so_open_pp_transfers" model="ir.actions.server" context="{'studio': True}">
+    <field name="binding_model_id" eval="False"/>
+    <field name="binding_type">action</field>
+    <field name="binding_view_types">list,form</field>
+    <field name="child_ids" eval="[(6, 0, [])]"/>
+    <field name="code"><![CDATA[# Available variables:
+#  - env: Odoo Environment on which the action is triggered
+#  - model: Odoo Model of the record on which the action is triggered; is a void recordset
+#  - record: record on which the action is triggered; may be void
+#  - records: recordset of all records on which the action is triggered in multi-mode; may be void
+#  - time, datetime, dateutil, timezone: useful Python libraries
+#  - float_compare: Odoo function to compare floats based on specific precisions
+#  - log: log(message, level='info'): logging function to record debug information in ir.logging table
+#  - UserError: Warning Exception to use with raise
+# To return an action, assign: action = {...}
+
+record.ensure_one()
+return_action = env["ir.actions.actions"]._for_xml_id("stock.action_picking_tree_all")
+return_action['domain'] = [('product_id', '=', record.id)]
+return_action['context'] = {'search_default_draft': 1,'search_default_waiting': 1,'search_default_available': 1}
+action = return_action
+
+
+]]></field>
+    <field name="crud_model_id" eval="False"/>
+    <field name="help" eval="False"/>
+    <field name="link_field_id" eval="False"/>
+    <field name="model_id" ref="product.model_product_product"/>
+    <field name="name">Open Transfers</field>
+    <field name="sequence">5</field>
+    <field name="state">code</field>
+  </record>
+  <record id="ir_act_server_so_open_pt_transfers" model="ir.actions.server" context="{'studio': True}">
+    <field name="binding_model_id" eval="False"/>
+    <field name="binding_type">action</field>
+    <field name="binding_view_types">list,form</field>
+    <field name="child_ids" eval="[(6, 0, [])]"/>
+    <field name="code"><![CDATA[# Available variables:
+#  - env: Odoo Environment on which the action is triggered
+#  - model: Odoo Model of the record on which the action is triggered; is a void recordset
+#  - record: record on which the action is triggered; may be void
+#  - records: recordset of all records on which the action is triggered in multi-mode; may be void
+#  - time, datetime, dateutil, timezone: useful Python libraries
+#  - float_compare: Odoo function to compare floats based on specific precisions
+#  - log: log(message, level='info'): logging function to record debug information in ir.logging table
+#  - UserError: Warning Exception to use with raise
+# To return an action, assign: action = {...}
+
+record.ensure_one()
+return_action = env["ir.actions.actions"]._for_xml_id("stock.action_picking_tree_all")
+return_action['domain'] = [('product_id.product_tmpl_id', 'in', record.ids)]
+return_action['context'] = {'search_default_draft': 1,'search_default_waiting': 1,'search_default_available': 1}
+action = return_action
+
+
+]]></field>
+    <field name="crud_model_id" eval="False"/>
+    <field name="help" eval="False"/>
+    <field name="link_field_id" eval="False"/>
+    <field name="model_id" ref="product.model_product_template"/>
+    <field name="name">Open Transfers</field>
+    <field name="sequence">5</field>
+    <field name="state">code</field>
+  </record>
+  <record id="ir_act_server_so_open_manufacturing_orders" model="ir.actions.server" context="{'studio': True}">
+    <field name="binding_model_id" eval="False"/>
+    <field name="binding_type">action</field>
+    <field name="binding_view_types">list,form</field>
+    <field name="child_ids" eval="[(6, 0, [])]"/>
+    <field name="code"><![CDATA[# Available variables:
+#  - env: Odoo Environment on which the action is triggered
+#  - model: Odoo Model of the record on which the action is triggered; is a void recordset
+#  - record: record on which the action is triggered; may be void
+#  - records: recordset of all records on which the action is triggered in multi-mode; may be void
+#  - time, datetime, dateutil, timezone: useful Python libraries
+#  - float_compare: Odoo function to compare floats based on specific precisions
+#  - log: log(message, level='info'): logging function to record debug information in ir.logging table
+#  - UserError: Warning Exception to use with raise
+# To return an action, assign: action = {...}
+
+record.ensure_one()
+return_action = env["ir.actions.actions"]._for_xml_id("mrp.mrp_production_action")
+if record.product_id:
+  return_action['domain'] = [('product_id', '=', record.product_id.id)]
+else:
+  return_action['domain'] = [('product_tmpl_id', '=', record.product_tmpl_id.id)]
+return_action['context'] = {'search_default_todo': True}
+action = return_action
+
+]]></field>
+    <field name="crud_model_id" eval="False"/>
+    <field name="help" eval="False"/>
+    <field name="link_field_id" eval="False"/>
+    <field name="model_id" ref="mrp.model_mrp_bom"/>
+    <field name="name">Open Manufacturing Orders</field>
+    <field name="sequence">5</field>
+    <field name="state">code</field>
+  </record>
+</odoo>
