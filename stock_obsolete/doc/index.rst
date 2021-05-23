@@ -69,66 +69,70 @@ None required
 User Experience Changes:
 ************************
 	
-- Fields to manage obselecence are added to the Product Form View: 
+.. list-table:: 
+   :widths: 50 50
+   :header-rows: 1
 
-.. image:: https://raw.githubusercontent.com/odoo-tm/apps/14.0/stock_obsolete/doc/product_fields.png
+   * - 
+     - 
+   * - Fields to manage obselecence are added to the Product Form View: 
+     - .. image:: https://raw.githubusercontent.com/odoo-tm/apps/14.0/stock_obsolete/doc/product_fields.png
 
-- A Warning is shown at the top of all Products that are (or will become) Obsolete:
+   * - A Warning is shown at the top of all Products that are (or will become) Obsolete:
+     - .. image:: https://raw.githubusercontent.com/odoo-tm/apps/14.0/stock_obsolete/doc/product_warning.png 
 
-.. image:: https://raw.githubusercontent.com/odoo-tm/apps/14.0/stock_obsolete/doc/product_warning.png
-
-- A Smart Button is added to the Product Form View, providing quick access to Open Inventory Transfers referencing the Product:
-
-.. image:: https://raw.githubusercontent.com/odoo-tm/apps/14.0/stock_obsolete/doc/product_smart_button.png
-
-- An icon is added to the Product List View, providing a visual cue for all Obsolete Products:
-
-.. image:: https://raw.githubusercontent.com/odoo-tm/apps/14.0/stock_obsolete/doc/product_list_view.png
-
-- A Filter is added to the Product Search View, providing quick access to all Obsolete Products:
-
-.. image:: https://raw.githubusercontent.com/odoo-tm/apps/14.0/stock_obsolete/doc/product_filter.png
-
-- An Warning and Icon are added to the Inventory Transfer Form View, providing visual cues about Obsolete Products:
-
-.. image:: https://raw.githubusercontent.com/odoo-tm/apps/14.0/stock_obsolete/doc/stock_picking_form.png
-
-- An icon is added to the Inventory Transfer List View, providing a visual cue for all Obsolete Products:
-
-.. image:: https://raw.githubusercontent.com/odoo-tm/apps/14.0/stock_obsolete/doc/stock_picking_list.png
-
-- A Filter is added to the Transfer Search View, providing quick access to all Transfers referencing Obsolete Products:
-
-.. image:: https://raw.githubusercontent.com/odoo-tm/apps/14.0/stock_obsolete/doc/stock_picking_search.png
+   * - A Smart Button is added to the Product Form View, providing quick access to Open Inventory Transfers referencing the Product:
+     - .. image:: https://raw.githubusercontent.com/odoo-tm/apps/14.0/stock_obsolete/doc/product_smart_button.png
 
 
-- An Warning and Icon are added to the Bill of Materials Form View, providing visual cues about Obsolete Products:
+   * - An icon is added to the Product List View, providing a visual cue for all Obsolete Products:
 
-.. image:: https://raw.githubusercontent.com/odoo-tm/apps/14.0/stock_obsolete/doc/bom_form.png
+     - .. image:: https://raw.githubusercontent.com/odoo-tm/apps/14.0/stock_obsolete/doc/product_list_view.png
 
-- A Smart Button is added to the Bill of Materials Form View, providing quick access to Open Manufacturing Orders referencing the Product:
+   * - A Filter is added to the Product Search View, providing quick access to all Obsolete Products:
 
-.. image:: https://raw.githubusercontent.com/odoo-tm/apps/14.0/stock_obsolete/doc/bom_smart.png
+     - .. image:: https://raw.githubusercontent.com/odoo-tm/apps/14.0/stock_obsolete/doc/product_filter.png
 
-- An icon is added to the Bill of Materials List View, providing a visual cue for all Obsolete Products:
+   * - An Warning and Icon are added to the Inventory Transfer Form View, providing visual cues about Obsolete Products:
 
-.. image:: https://raw.githubusercontent.com/odoo-tm/apps/14.0/stock_obsolete/doc/bom_list.png
+     - .. image:: https://raw.githubusercontent.com/odoo-tm/apps/14.0/stock_obsolete/doc/stock_picking_form.png
 
-- A Filter is added to the Bill of Materials Search View, providing quick access to any BoM's referencing Obsolete Products:
+   * - An icon is added to the Inventory Transfer List View, providing a visual cue for all Obsolete Products:
 
-.. image:: https://raw.githubusercontent.com/odoo-tm/apps/14.0/stock_obsolete/doc/bom_search.png
+     - .. image:: https://raw.githubusercontent.com/odoo-tm/apps/14.0/stock_obsolete/doc/stock_picking_list.png
 
-- An Warning and Icon are added to the Manufacturing Order Form View, providing visual cues about Obsolete Products:
+   * - A Filter is added to the Transfer Search View, providing quick access to all Transfers referencing Obsolete Products:
 
-.. image:: https://raw.githubusercontent.com/odoo-tm/apps/14.0/stock_obsolete/doc/order_form.png
+     - .. image:: https://raw.githubusercontent.com/odoo-tm/apps/14.0/stock_obsolete/doc/stock_picking_search.png
 
-- An icon is added to the Manufacturing Orders List View, providing a visual cue for all Obsolete Products:
 
-.. image:: https://raw.githubusercontent.com/odoo-tm/apps/14.0/stock_obsolete/doc/order_list.png
+   * - An Warning and Icon are added to the Bill of Materials Form View, providing visual cues about Obsolete Products:
 
-- A Filter is added to the Manufacturing Orders Search View, providing quick access to any MO's referencing Obsolete Products:
+     - .. image:: https://raw.githubusercontent.com/odoo-tm/apps/14.0/stock_obsolete/doc/bom_form.png
 
-.. image:: https://raw.githubusercontent.com/odoo-tm/apps/14.0/stock_obsolete/doc/order_search.png
+   * - A Smart Button is added to the Bill of Materials Form View, providing quick access to Open Manufacturing Orders referencing the Product:
+
+     - .. image:: https://raw.githubusercontent.com/odoo-tm/apps/14.0/stock_obsolete/doc/bom_smart.png
+
+   * - An icon is added to the Bill of Materials List View, providing a visual cue for all Obsolete Products:
+
+     - .. image:: https://raw.githubusercontent.com/odoo-tm/apps/14.0/stock_obsolete/doc/bom_list.png
+
+   * - A Filter is added to the Bill of Materials Search View, providing quick access to any BoM's referencing Obsolete Products:
+
+     - .. image:: https://raw.githubusercontent.com/odoo-tm/apps/14.0/stock_obsolete/doc/bom_search.png
+
+   * - An Warning and Icon are added to the Manufacturing Order Form View, providing visual cues about Obsolete Products:
+
+     - .. image:: https://raw.githubusercontent.com/odoo-tm/apps/14.0/stock_obsolete/doc/order_form.png
+
+   * - An icon is added to the Manufacturing Orders List View, providing a visual cue for all Obsolete Products:
+
+     - .. image:: https://raw.githubusercontent.com/odoo-tm/apps/14.0/stock_obsolete/doc/order_list.png
+
+   * - A Filter is added to the Manufacturing Orders Search View, providing quick access to any MO's referencing Obsolete Products:
+
+     - .. image:: https://raw.githubusercontent.com/odoo-tm/apps/14.0/stock_obsolete/doc/order_search.png
 
 
 	
@@ -145,7 +149,7 @@ Walkthrough:
 
 The following example requires the demo data installed.
 
-- Edit 
+- TDB 
 
 .. image:: https://raw.githubusercontent.com/odoo-tm/apps/14.0/mrp_services/doc/service_product.png
 
