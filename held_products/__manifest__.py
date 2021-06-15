@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 {
     'name': 'Held Products',
-    'version': '0.0',
+    'version': '14.0.1.1',
     'category': 'Customizations/Studio',
     'summary': 'Studio App: Manage Customer specific purchases, with alerts and traceability',
     'description': u"""
