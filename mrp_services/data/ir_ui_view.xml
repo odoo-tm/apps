@@ -10,7 +10,7 @@
             <field name="x_total_extra_cost" invisible="1"/>
             <field name="x_service_product_ids" attrs="{'readonly': [('state','in',['done','cancel'])]}">
               <tree editable="bottom">
-                <field name="x_product_id" domain="[('type','=','service')]"/>
+                <field name="x_product_id" domain="[('type','=','service')] context="{'default_type':'service'}""/>
                 <field name="x_name"/>
                 <field name="x_to_consume" attrs="{'readonly':['|',('x_quantity','!=',0.0),('parent.state','in',['progress','to_close','done','cancel'])]}"/>
                 <field name="x_quantity" attrs="{'column_invisible': [('parent.state','in',['draft'])], 'readonly':[('parent.state','not in',['confirmed','progress'])]}"/>
